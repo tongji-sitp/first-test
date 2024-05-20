@@ -65,4 +65,12 @@ class ScopusAPI:
     def update_literature_info(self, doi):
         # 如果API支持，发送更新请求到Scopus API
         # 注意：Scopus API可能不支持直接更新文献信息
-        pass
+        # 因此，我们将手动查询最新信息并更新本地数据库
+        literature_info = self.get_literature_info(doi)
+        if literature_info:
+            # 更新本地数据库中的文献信息
+            # 假设我们有一个数据库实例，我们可以使用它来更新信息
+            db.update_literature(literature_info)
+        else:
+            print("Failed to update literature information.")
+
