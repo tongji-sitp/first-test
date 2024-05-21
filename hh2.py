@@ -31,6 +31,7 @@ class Database:
     def __init__(self, db_path):
         self.db_path = db_path
         self.db = TinyDB(db_path)
+        self.db.table('literature')
 
     def store_literature(self, literature):
         # 存储文献信息到数据库
@@ -39,12 +40,18 @@ class Database:
     def update_literature(self, literature):
         # 更新数据库中的文献信息
         # 注意：需要根据TinyDB的文档来正确实现更新逻辑
-        pass
+        query = query()
+        where_clause = [query.title == literature.title]  # 示例：根据标题更新
+        self.db.update({'field_to_update': literature.field_to_update}, where=where_clause)
 
     def query_literature(self, doi):
         # 根据DOI从数据库中查询文献信息
         # 注意：需要根据TinyDB的文档来正确实现查询逻辑
-        pass
+        query = query()
+        result = self.db.search(query.doi == doi)
+        return result[0] if result else None
+
+
 
 
 class ScopusAPI:
