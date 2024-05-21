@@ -8,3 +8,4 @@ if __name__ == "__main__":
     new_member_name = input("请输入新成员的名字: ")  
     organization_name = "Github协作组织"   
     welcome_new_member(new_member_name, organization_name)
+    print("这是一个测试")
