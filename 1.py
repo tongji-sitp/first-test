@@ -9,3 +9,4 @@ if __name__ == "__main__":
     organization_name = "Github协作组织"   
     welcome_new_member(new_member_name, organization_name)
     print("这是一个测试")
+    print("这是一个尝试")
